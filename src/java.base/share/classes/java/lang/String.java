@@ -34,6 +34,7 @@ package java.lang;
 import java.io.ObjectStreamField;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.lang.String.StringCompressionFlag;
 import java.lang.annotation.Native;
 import java.lang.invoke.MethodHandles;
 import java.lang.constant.Constable;
@@ -5311,6 +5312,9 @@ public final class String
     String(byte[] value, byte coder) {
         this.value = value;
         this.coder = coder;
+        if (COMPACT_STRINGS && UTF16 == coder) {
+            initCompressionFlag();
+        }
     }
 
     byte coder() {
