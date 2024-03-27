@@ -196,7 +196,7 @@ final class StringUTF16 {
         checkBoundsOffCount(srcOff, len, src);
         for (int i = 0; i < len; i++) {
             char c = getChar(src, srcOff);
-            System.out.println("char is " + c + " value " + (int)c);
+            //System.out.println("char is " + c + " value " + (int)c);
             if (c > 0xFF) {
                 len = 0;
                 break;
