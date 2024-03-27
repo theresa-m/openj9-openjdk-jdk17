@@ -450,7 +450,7 @@ public final class StringBuilder
     @IntrinsicCandidate
     public String toString() {
         // Create a copy, don't share the array
-        System.out.println("toString: " + isLatin1());
+        //System.out.println("toString: " + isLatin1());
         return isLatin1() ? StringLatin1.newString(value, 0, count)
                           : StringUTF16.newString(value, 0, count);
     }
