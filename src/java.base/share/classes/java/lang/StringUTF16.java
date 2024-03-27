@@ -196,6 +196,7 @@ final class StringUTF16 {
         checkBoundsOffCount(srcOff, len, src);
         for (int i = 0; i < len; i++) {
             char c = getChar(src, srcOff);
+            System.out.println("char is " + c + " value " + (int)c);
             if (c > 0xFF) {
                 len = 0;
                 break;
@@ -1170,12 +1171,15 @@ final class StringUTF16 {
             return "";
         }
         if (String.COMPACT_STRINGS) {
+            System.out.println("try compression val " + val + " index " + index + " len " + len);
             byte[] buf = compress(val, index, len);
             if (buf != null) {
+                System.out.println("this one latin");
                 return new String(buf, LATIN1);
             }
         }
         int last = index + len;
+        System.out.println("this one utf8");
         return new String(Arrays.copyOfRange(val, index << 1, last << 1), UTF16);
     }
 
