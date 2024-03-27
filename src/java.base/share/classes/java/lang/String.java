@@ -583,6 +583,7 @@ public final class String
             this.value = Arrays.copyOfRange(ascii, offset, offset + count);
             this.coder = LATIN1;
         } else {
+            System.out.println("got to here");
             hibyte <<= 8;
             byte[] val = StringUTF16.newBytesFor(count);
             for (int i = 0; i < count; i++) {
@@ -591,6 +592,7 @@ public final class String
             this.value = val;
             this.coder = UTF16;
             if (COMPACT_STRINGS) {
+                System.out.println("init compression flags");
                 initCompressionFlag();
             }
         }
